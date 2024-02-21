@@ -21,6 +21,8 @@ jobs:
 
     - name: rewrite code
       run: |
+        sudo apt install maven -y
+        mvn -version
         mvn rewrite:run
     
  
