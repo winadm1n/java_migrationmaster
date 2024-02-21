@@ -1,0 +1,30 @@
+name: Compiling Java Application
+ 
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Fetch all history to ensure access to all branches and commits
+ 
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: rewrite code
+      run: |
+        mvn rewrite:run
+    
+ 
+    - name: Compile Java files
+      run: |
+        cd bankingApplication/src
+        javac *.java
