@@ -15,7 +15,7 @@ public class Example {
     Integer i = new Integer(1);
 
     void divide() {
-        BigDecimal bd = BigDecimal.valueOf(10);
+        BigDecmal bd = BigDecimal.valueOf(10);
         BigDecimal bd2 = BigDecimal.valueOf(2);
         bd.divide(bd2, BigDecimal.ROUND_DOWN);
         bd.divide(bd2, 1);
