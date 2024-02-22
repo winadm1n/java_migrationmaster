@@ -41,6 +41,8 @@ jobs:
         git add .
         git commit -m "Apply Java 17 migration and compile Java files"
         git push origin migrated-branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.actions_pat_token }}
     
  
     - name: Compile Java files
