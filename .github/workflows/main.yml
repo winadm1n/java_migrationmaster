@@ -26,6 +26,11 @@ jobs:
         cd Calculator-master
         mvn install
         mvn rewrite:run
+        
+    - name: Commit changes
+      run: |
+        git add .
+        git commit -m "commit initial"
 
 
     - name: Configure Git identity
