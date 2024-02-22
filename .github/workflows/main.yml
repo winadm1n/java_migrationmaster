@@ -26,6 +26,15 @@ jobs:
         cd Calculator-master
         mvn install
         mvn rewrite:run
+        
+    - name: Create new branch
+      run: git checkout -b migrated-branch
+
+    - name: Commit and push changes
+      run: |
+        git add .
+        git commit -m "Apply Java 17 migration and compile Java files"
+        git push origin migrated-branch
     
  
     - name: Compile Java files
