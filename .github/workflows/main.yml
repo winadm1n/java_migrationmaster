@@ -23,6 +23,7 @@ jobs:
       run: |
         sudo apt install maven -y
         mvn -version
+        mvn install
         mvn rewrite:run
     
  
