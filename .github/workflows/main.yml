@@ -23,6 +23,7 @@ jobs:
       run: |
         sudo apt install maven -y
         mvn -version
+        cd Calculator-master
         mvn install
         mvn rewrite:run
     
