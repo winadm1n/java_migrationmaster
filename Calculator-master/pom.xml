@@ -28,7 +28,6 @@
             <version>${junit-jupiter-params.version}</version>
             <scope>test</scope>
         </dependency>
-    </dependencies>
          <build>
            <plugins>
              <plugin>
@@ -50,4 +49,6 @@
              </plugin>
            </plugins>
          </build>
+    </dependencies>
+
 </project>
