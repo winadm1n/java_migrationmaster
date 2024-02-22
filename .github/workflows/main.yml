@@ -26,17 +26,16 @@ jobs:
         cd Calculator-master
         mvn install
         mvn rewrite:run
-        
-    - name: Commit changes
-      run: |
-        git add .
-        git commit -m "commit initial"
-
 
     - name: Configure Git identity
       run: |
         git config --global user.email "winadm1n@protonmail.com"
         git config --global user.name "winadm1n"
+        
+    - name: Commit changes
+      run: |
+        git add .
+        git commit -m "commit initial"
         
     - name: Create new branch
       run: git checkout -b migrated-branch
