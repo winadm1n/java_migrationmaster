@@ -34,20 +34,36 @@ jobs:
       run: |
         git config --global user.email "winadm1n@protonmail.com"
         git config --global user.name "winadm1n"
-        
-    - name: Commit changes
-      run: |
-        git add .
-        git commit -m "commit initial"
-        
-    - name: Create new branch
-      run: git checkout -b migrated-branch
+
+    - name: Create new folder
+      run: mkdir migrated-folder  # Creates a new folder named new-folder
+
+    - name: Move files to new folder
+      run: mv * migrated-folder/  # Moves all files to the new-folder
 
     - name: Commit and push changes
       run: |
-        git push origin migrated-branch
+        git add .
+        git commit -m "Move files to new folder"
+        git push origin main  # Pushes changes to the main branch
+      working-directory: ./migrated-folder  # Specifies the working directory for the Git commands
       env:
         GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT_TOKEN }}
+
+    
+    # - name: Commit changes
+    #   run: |
+    #     git add .
+    #     git commit -m "commit initial"
+        
+    # - name: Create new branch
+    #   run: git checkout -b migrated-branch
+
+    # - name: Commit and push changes
+    #   run: |
+    #     git push origin migrated-branch
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT_TOKEN }}
     
  
     - name: Compile Java files
