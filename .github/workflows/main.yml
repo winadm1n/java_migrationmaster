@@ -40,13 +40,14 @@ jobs:
         if [ ! -d "migrated-folder" ]; then
           mkdir migrated-folder
           mv Calculator-master/* migrated-folder/  # Moves files from specific-folder to new-folder
+          cd ./migrated-folder
           git add .
           git commit -m "Move files to new folder"
           git push origin main  # Pushes changes to the main branch
         else
-          echo "new-folder already exists, skipping move operation"
+          echo " migrated-folder already exists, skipping move operation"
         fi
-      working-directory: ./migrated-folder  # Specifies the working directory for the Git commands
+      # working-directory: ./migrated-folder  # Specifies the working directory for the Git commands
       env:
         GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT_TOKEN }}
 
