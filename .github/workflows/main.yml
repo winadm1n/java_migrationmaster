@@ -39,7 +39,7 @@ jobs:
       run: mkdir migrated-folder  # Creates a new folder named new-folder
 
     - name: Move files to new folder
-      run: mv * migrated-folder/  # Moves all files to the new-folder
+      run: mv Calculator-master/* migrated-folder/  # Moves all files to the new-folder
 
     - name: Commit and push changes
       run: |
