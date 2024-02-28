@@ -68,5 +68,5 @@ jobs:
  
     - name: Compile Java files
       run: |
-        cd Calculator-master/src
         javac *.java
+      working-directory: ./migrated-folder/src
