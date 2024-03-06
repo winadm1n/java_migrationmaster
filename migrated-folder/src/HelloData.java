@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class HelloData1 {
+public class HelloData {
     private static int num1 = 0;
     private static int num2 = 0;
     private static char operator;
