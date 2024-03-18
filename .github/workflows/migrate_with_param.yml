@@ -42,7 +42,7 @@ jobs:
     - name: Check if folder exists and move files
       run: |
         if [ ! -d "migrated-${{ github.event.inputs.folder_name }}" ]; then
-          mkdir ${{ github.event.inputs.folder_name }}
+          mkdir migrated-${{ github.event.inputs.folder_name }}
           mv ${{ github.event.inputs.folder_name }}/* migrated-${{ github.event.inputs.folder_name }}/  # Moves files from specific-folder to new-folder
           cd ./migrated-${{ github.event.inputs.folder_name }}
           git add .
