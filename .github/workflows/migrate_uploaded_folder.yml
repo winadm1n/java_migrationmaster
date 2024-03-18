@@ -1,4 +1,4 @@
-name: Migrating java Application
+name: Migrating java with folder params
  
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ jobs:
       run: |
         sudo apt install maven -y
         mvn -version
-        cd Calculator-master
+        cd ${{ github.event.inputs.folder_name }}
         mvn install
         mvn rewrite:run
 
@@ -41,15 +41,15 @@ jobs:
 
     - name: Check if folder exists and move files
       run: |
-        if [ ! -d "migrated-folder" ]; then
-          mkdir migrated-folder
-          mv Calculator-master/* migrated-folder/  # Moves files from specific-folder to new-folder
-          cd ./migrated-folder
+        if [ ! -d "migrated-${{ github.event.inputs.folder_name }}" ]; then
+          mkdir ${{ github.event.inputs.folder_name }}
+          mv ${{ github.event.inputs.folder_name }}/* migrated-${{ github.event.inputs.folder_name }}/  # Moves files from specific-folder to new-folder
+          cd ./migrated-${{ github.event.inputs.folder_name }}
           git add .
           git commit -m "Move files to new folder"
           git push origin main  # Pushes changes to the main branch
         else
-          echo " migrated-folder already exists, skipping move operation"
+          echo " migrated-${{ github.event.inputs.folder_name }} already exists, skipping move operation"
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT_TOKEN }}
