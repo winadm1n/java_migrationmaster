@@ -1,4 +1,4 @@
-name: Compiling Java Application
+name: Migrating Java Application
  
 on:
   push:
