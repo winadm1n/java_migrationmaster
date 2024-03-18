@@ -1,0 +1,30 @@
+name: Compille 
+ 
+on:
+  push:
+    paths:
+      - 'migrated-folder/**'
+ 
+jobs:
+ 
+  compile_saved_code:
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history to ensure access to all branches and commits
+        token: ${{ secrets.ACTIONS_PAT_TOKEN }}
+        
+    - name: Install JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt'
+        java-version: '17' # or any other version you need
+
+
+    - name: Compile Java files
+      run: |
+        javac *.java
+      working-directory: ./migrated-folder/src
