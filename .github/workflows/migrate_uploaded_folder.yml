@@ -1,0 +1,55 @@
+name: Migrating java Application
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      folder_name:
+        description: 'Folder Name'
+        required: true
+
+
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history to ensure access to all branches and commits
+        token: ${{ secrets.ACTIONS_PAT_TOKEN }}
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: rewrite code
+      run: |
+        sudo apt install maven -y
+        mvn -version
+        cd Calculator-master
+        mvn install
+        mvn rewrite:run
+
+    - name: Configure Git identity
+      run: |
+        git config --global user.email "winadm1n@protonmail.com"
+        git config --global user.name "winadm1n"
+
+    - name: Check if folder exists and move files
+      run: |
+        if [ ! -d "migrated-folder" ]; then
+          mkdir migrated-folder
+          mv Calculator-master/* migrated-folder/  # Moves files from specific-folder to new-folder
+          cd ./migrated-folder
+          git add .
+          git commit -m "Move files to new folder"
+          git push origin main  # Pushes changes to the main branch
+        else
+          echo " migrated-folder already exists, skipping move operation"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT_TOKEN }}
