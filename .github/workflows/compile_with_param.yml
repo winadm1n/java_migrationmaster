@@ -1,9 +1,11 @@
-name: Compille 
- 
+name: Compile with folder params
+
 on:
-  push:
-    paths:
-      - 'migrated-folder/**'
+  workflow_dispatch:
+    inputs:
+      folder_name:
+        description: 'Folder Name'
+        required: true
  
 jobs:
  
@@ -27,4 +29,4 @@ jobs:
     - name: Compile Java files
       run: |
         javac *.java
-      working-directory: ./migrated-folder/src
+      working-directory: ./migrated-${{ github.event.inputs.folder_name }}/src
