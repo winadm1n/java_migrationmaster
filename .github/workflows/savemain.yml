@@ -27,5 +27,5 @@ jobs:
     - name: Compile Java files
       run: |
         echo "Compiling Java files..."
-        javac  -Xlint:none *.java
+        javac -Xlint:none *.java
       working-directory: ./migrated-folder/src
