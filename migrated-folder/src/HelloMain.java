@@ -1,4 +1,4 @@
-public class HelloMain1 {
+public class HelloMain {
     public static void main(String[] args) {
         // Call method to read input
         HelloData.readInput();
