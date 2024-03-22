@@ -26,5 +26,6 @@ jobs:
 
     - name: Compile Java files
       run: |
-        javac *.java
+        # javac *.java
+        javac *.java > /dev/null 2>&1
       working-directory: ./migrated-folder/src
