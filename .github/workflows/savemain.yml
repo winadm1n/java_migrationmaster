@@ -27,5 +27,5 @@ jobs:
     - name: Compile Java files
       run: |
         echo "Compiling Java files..."
-        javac *.java > /dev/null 2>&1 || exit 0
+        javac *.java
       working-directory: ./migrated-folder/src
