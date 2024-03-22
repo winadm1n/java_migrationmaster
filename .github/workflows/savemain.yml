@@ -27,5 +27,5 @@ jobs:
     - name: Compile Java files
       run: |
         echo "Compiling Java files..."
-        javac -quiet *.java
+        javac *.java
       working-directory: ./migrated-folder/src
