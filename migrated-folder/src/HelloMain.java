@@ -11,5 +11,5 @@ public class HelloMain {
 
         // Call method to close the scanner
         HelloData.closeScanner();
-    }
+    
 }
